@@ -20,7 +20,7 @@ public class Sort {
 		this.similarityTransformer = similarityTransformer;
 		catalog = Catalog.simpleCatalog();
 		
-		final BuyLog trainingBuyLog = BuyLog.trainingBuyLog(catalog);
+		final BuyLog trainingBuyLog = BuyLogs.trainingBuyLog(catalog);
 		final ImmutableList<BuyEvent> originalList = trainingBuyLog.getList();
 		System.out.println(originalList);
 		
@@ -42,7 +42,7 @@ public class Sort {
 					.add(classify(catalog, model, "1", "3", "3", "3", "3", "3", "3"))
 					.build();
 
-			final List<BuyEvent> newBuyLog = BuyLog.buyEvents(newUsers, catalog);
+			final List<BuyEvent> newBuyLog = BuyLogs.buyEvents(newUsers, catalog);
 	
 			System.out.println();
 			System.out.println();
