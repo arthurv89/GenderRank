@@ -1,2 +1,2 @@
-# GenderRank
-GenderRank: Gender-based search rank
+# GenderClassification
+GenderClassification classifies users based on the products they bought.
