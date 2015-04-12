@@ -1,4 +1,4 @@
-package nl.arthurvlug.genderSearchRank;
+package nl.arthurvlug.genderClassification.domain;
 
 import com.google.common.base.Predicate;
 

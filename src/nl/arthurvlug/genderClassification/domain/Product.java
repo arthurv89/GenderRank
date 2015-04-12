@@ -1,4 +1,4 @@
-package nl.arthurvlug.genderSearchRank;
+package nl.arthurvlug.genderClassification.domain;
 
 public class Product {
 	private final String id;

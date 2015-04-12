@@ -1,4 +1,4 @@
-package nl.arthurvlug.genderSearchRank;
+package nl.arthurvlug.genderClassification.domain;
 
 public enum Category {
 	BEAUTY, ELECTRONICS, BOOKS

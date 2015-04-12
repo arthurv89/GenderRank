@@ -1,4 +1,6 @@
-package nl.arthurvlug.genderSearchRank;
+package nl.arthurvlug.genderClassification.domain;
+
+import nl.arthurvlug.genderClassification.model.GenderProbabilities;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;

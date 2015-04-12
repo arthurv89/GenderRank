@@ -1,4 +1,4 @@
-package nl.arthurvlug.genderSearchRank;
+package nl.arthurvlug.genderClassification;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -7,6 +7,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import nl.arthurvlug.genderClassification.domain.BuyEvent;
+import nl.arthurvlug.genderClassification.domain.BuyLog;
+import nl.arthurvlug.genderClassification.domain.BuyLogs;
+import nl.arthurvlug.genderClassification.domain.Catalog;
+import nl.arthurvlug.genderClassification.domain.Catalogs;
+import nl.arthurvlug.genderClassification.domain.Category;
+import nl.arthurvlug.genderClassification.domain.Gender;
+import nl.arthurvlug.genderClassification.domain.User;
+import nl.arthurvlug.genderClassification.model.CategorySupport;
+import nl.arthurvlug.genderClassification.model.ClassifiedUser;
+import nl.arthurvlug.genderClassification.model.GenderProbabilities;
+import nl.arthurvlug.genderClassification.model.Model;
 
 import com.atlassian.fugue.Function2;
 import com.google.common.collect.ImmutableList;
@@ -18,7 +31,7 @@ public class Sort {
 
 	private Sort(final Function2<Gender, Double, Double> similarityTransformer) {
 		this.similarityTransformer = similarityTransformer;
-		catalog = Catalog.simpleCatalog();
+		catalog = Catalogs.simpleCatalog();
 		
 		final BuyLog trainingBuyLog = BuyLogs.trainingBuyLog(catalog);
 		final ImmutableList<BuyEvent> originalList = trainingBuyLog.getList();

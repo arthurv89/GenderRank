@@ -1,8 +1,14 @@
-package nl.arthurvlug.genderSearchRank;
+package nl.arthurvlug.genderClassification.model;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import nl.arthurvlug.genderClassification.domain.Catalog;
+import nl.arthurvlug.genderClassification.domain.Category;
+import nl.arthurvlug.genderClassification.domain.Gender;
+import nl.arthurvlug.genderClassification.domain.Product;
+import nl.arthurvlug.genderClassification.domain.User;
 
 import com.atlassian.fugue.Function2;
 import com.google.common.collect.ImmutableMap;

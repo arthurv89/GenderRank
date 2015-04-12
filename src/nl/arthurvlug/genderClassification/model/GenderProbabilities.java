@@ -1,9 +1,11 @@
-package nl.arthurvlug.genderSearchRank;
+package nl.arthurvlug.genderClassification.model;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import nl.arthurvlug.genderClassification.domain.Gender;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;

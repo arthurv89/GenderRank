@@ -1,15 +1,15 @@
-package nl.arthurvlug.genderSearchRank;
+package nl.arthurvlug.genderClassification.domain;
 
 import static com.google.common.collect.FluentIterable.from;
 
 import java.util.List;
 import java.util.Map;
 
+import nl.arthurvlug.genderClassification.model.ClassifiedUser;
+
 import com.google.common.collect.ImmutableList;
 
 public class BuyLogs {
-
-
 	public static List<BuyEvent> buyEvents(final List<ClassifiedUser> newUsers, final Catalog catalog) {
 		ImmutableList<BuyEvent> events = from(
 				from(newUsers).index((final ClassifiedUser u) -> u.getUser()).entries()

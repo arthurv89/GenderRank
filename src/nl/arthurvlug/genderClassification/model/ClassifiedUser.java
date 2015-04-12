@@ -1,4 +1,6 @@
-package nl.arthurvlug.genderSearchRank;
+package nl.arthurvlug.genderClassification.model;
+
+import nl.arthurvlug.genderClassification.domain.User;
 
 
 public class ClassifiedUser {
