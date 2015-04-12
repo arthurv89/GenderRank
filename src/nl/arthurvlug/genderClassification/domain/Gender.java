@@ -3,9 +3,9 @@ package nl.arthurvlug.genderClassification.domain;
 import com.google.common.base.Predicate;
 
 public enum Gender {
-	MALE((final Gender g) -> g == Gender.valueOf("MALE")),
-	UNKNOWN((final Gender g) -> true),
-	FEMALE((final Gender g) -> g == Gender.valueOf("FEMALE"));
+	MALE(g -> g == Gender.valueOf("MALE")),
+	UNKNOWN(g -> true),
+	FEMALE(g -> g == Gender.valueOf("FEMALE"));
 	
 	private Predicate<Gender> pred;
 

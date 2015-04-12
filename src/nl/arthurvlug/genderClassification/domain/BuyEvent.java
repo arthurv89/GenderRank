@@ -6,10 +6,10 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 
 public class BuyEvent {
-	private GenderProbabilities genderProbabilities;
-	private Product product;
+	private final GenderProbabilities genderProbabilities;
+	private final Product product;
 
-	public BuyEvent(Product product, GenderProbabilities genderProbabilities) {
+	public BuyEvent(final Product product, final GenderProbabilities genderProbabilities) {
 		Preconditions.checkArgument(product != null);
 		Preconditions.checkArgument(product != null);
 
@@ -17,7 +17,7 @@ public class BuyEvent {
 		this.product = product;
 	}
 
-	public BuyEvent(Gender gender, Product product) {
+	public BuyEvent(final Product product, final Gender gender) {
 		this(product, new GenderProbabilities(ImmutableMap.<Gender, Double> builder()
 			.put(gender, 1.0)
 			.build()

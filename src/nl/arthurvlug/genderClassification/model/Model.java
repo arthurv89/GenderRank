@@ -1,5 +1,7 @@
 package nl.arthurvlug.genderClassification.model;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -10,16 +12,14 @@ import nl.arthurvlug.genderClassification.domain.Gender;
 import nl.arthurvlug.genderClassification.domain.Product;
 import nl.arthurvlug.genderClassification.domain.User;
 
-import com.atlassian.fugue.Function2;
 import com.google.common.collect.ImmutableMap;
 
 public class Model {
 	private final Map<Gender, CategorySupport> mapByGender;
-	private final Function2<Gender, Double, Double> similarityTransformer;
+	public static final NumberFormat nf = new DecimalFormat("0.000");
 
-	public Model(final Map<Gender, CategorySupport> mapByGender, final Function2<Gender, Double, Double> similarityTransformer) {
+	public Model(final Map<Gender, CategorySupport> mapByGender) {
 		this.mapByGender = mapByGender;
-		this.similarityTransformer = similarityTransformer;
 	}
 
 	public GenderProbabilities determineGender(final User user, final Catalog catalog) {
@@ -43,7 +43,6 @@ public class Model {
 			final Gender gender = entry.getKey();
 			final CategorySupport modelCatSupport = entry.getValue();
 			double genderSimilarity = cosineSimilarity(modelCatSupport, userCatSupport);
-			genderSimilarity = similarityTransformer.apply(gender, genderSimilarity);
 			similarityByGender.put(gender, genderSimilarity);
 		}
 
@@ -85,6 +84,14 @@ public class Model {
 
 	@Override
 	public String toString() {
-		return mapByGender.toString();
+		String s = "";
+		for(Entry<Gender, CategorySupport> entry : mapByGender.entrySet()) {
+			s += entry.getKey() + " -> \t{";
+			for(Entry<Category, Double> support : entry.getValue().entrySet()) {
+				s += support.getKey() + " = " + nf.format(support.getValue()) + ", ";
+			}
+			s += "}\n";
+		}
+		return s;
 	}
 }

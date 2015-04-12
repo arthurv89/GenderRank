@@ -1,24 +1,30 @@
 package nl.arthurvlug.genderClassification.domain;
 
+import java.util.Iterator;
 import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
-public class BuyLog {
-	private final ImmutableList<BuyEvent> totalList;
+public class BuyLog implements Iterable<BuyEvent> {
+	private final ImmutableList<BuyEvent> buyEvents;
 
-	BuyLog(final ImmutableList<BuyEvent> newList) {
-		this.totalList = newList;
+	BuyLog(final ImmutableList<BuyEvent> buyEvents) {
+		this.buyEvents = buyEvents;
 	}
 	
-	public BuyLog(final List<BuyEvent> originalList, final List<BuyEvent> newList) {
-		this.totalList = ImmutableList.<BuyEvent> builder()
-				.addAll(originalList)
-				.addAll(newList)
+	public BuyLog(final List<BuyEvent> originalBuyEvents, final List<BuyEvent> newBuyEvents) {
+		this.buyEvents = ImmutableList.<BuyEvent> builder()
+				.addAll(originalBuyEvents)
+				.addAll(newBuyEvents)
 				.build();
 	}
 
-	public ImmutableList<BuyEvent> getList() {
-		return totalList;
+	@Override
+	public Iterator<BuyEvent> iterator() {
+		return buyEvents.iterator();
+	}
+
+	public ImmutableList<BuyEvent> getBuyEvents() {
+		return buyEvents;
 	}
 }

@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 
 import nl.arthurvlug.genderClassification.domain.Gender;
 
+import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -20,9 +21,13 @@ public class GenderProbabilities {
 	
 	public ImmutableList<Entry<Gender, Double>> entrySet() {
 		List<Entry<Gender, Double>> entrySet = Lists.newArrayList(genderProbabilityMap.entrySet());
-		Collections.sort(entrySet, (Entry<Gender, Double> o1, Entry<Gender, Double> o2) ->
+		Collections.sort(entrySet, (o1, o2) ->
 			o1.getKey().compareTo(o2.getKey()));
 		return ImmutableList.copyOf(entrySet);
+	}
+	
+	public ImmutableCollection<Double> values() {
+		return genderProbabilityMap.values();
 	}
 	
 	@Override
